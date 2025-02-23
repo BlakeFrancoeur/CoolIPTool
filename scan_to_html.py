@@ -12,6 +12,9 @@ if os.path.exists(HTML_FILE):
     os.remove(HTML_FILE)
     print(f"Deleted old {HTML_FILE}, starting fresh...")
 
+# Maximum number of rows (50 in this case)
+MAX_ROWS = 50
+
 def extract_ips(ip_list):
     ip_pattern = r'\b(?:\d{1,3}\.){3}\d{1,3}\b'
     return re.findall(ip_pattern, ",".join(ip_list))
@@ -79,7 +82,7 @@ def find_matching_icon(title):
     return None
 
 def generate_html_report(results):
-    """Generates an HTML report and overwrites old data properly."""
+    """Generates an HTML report with a fixed number of rows (50)."""
     html_content = """
     <!DOCTYPE html>
     <html lang="en">
@@ -107,11 +110,16 @@ def generate_html_report(results):
     """
 
     # Iterate through the results and add each IP data in a table row
-    for ip, data in results.items():
-        title = data["title"]
-        ports = ", ".join(map(str, data["ports"])) if data["ports"] else "None"
-        icon_path = data["icon"]
-        icon_html = f'<img src="{icon_path}" alt="Icon">' if icon_path else "No Icon"
+    # If there are less than 50 IPs, the rest of the rows remain empty
+    for idx in range(MAX_ROWS):
+        if idx < len(results):
+            ip = results[idx]["ip"]
+            title = results[idx]["title"]
+            ports = ", ".join(map(str, results[idx]["ports"])) if results[idx]["ports"] else "None"
+            icon_path = results[idx]["icon"]
+            icon_html = f'<img src="{icon_path}" alt="Icon">' if icon_path else "No Icon"
+        else:
+            ip, title, ports, icon_html = "", "", "", ""
 
         html_content += f"""
             <tr>
@@ -139,7 +147,7 @@ ips = extract_ips(input_ips)
 
 proceed = input("Do you want to check ports for these IPs? (yes/no): ").strip().lower()
 
-results = {}
+results = []
 
 if proceed == 'yes':
     print("Scanning ports... IP addresses will be printed at the end.")
@@ -151,11 +159,12 @@ if proceed == 'yes':
         title = get_webpage_title(ip)
         icon_path = find_matching_icon(title)
 
-        results[ip] = {
+        results.append({
+            "ip": ip,
             "title": title,
             "ports": successful_connections.get(ip, []),
             "icon": icon_path
-        }
+        })
 
     generate_html_report(results)
 

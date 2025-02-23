@@ -82,7 +82,7 @@ def find_matching_icon(title):
     return None
 
 def generate_html_report(results):
-    """Generates an HTML report with a fixed number of rows (50)."""
+    """Generates an HTML report with only the valid results."""
     html_content = """
     <!DOCTYPE html>
     <html lang="en">
@@ -103,26 +103,25 @@ def generate_html_report(results):
             </tr>
     """
 
-    # Iterate through the results and add each IP data in a table row
-    # If there are less than 50 IPs, the rest of the rows remain empty
-    for idx in range(MAX_ROWS):
-        if idx < len(results):
-            ip = results[idx]["ip"]
-            title = results[idx]["title"]
-            ports = ", ".join(map(str, results[idx]["ports"])) if results[idx]["ports"] else "None"
-            icon_path = results[idx]["icon"]
+    # Only add rows for the actual IPs in the results list
+    if not results:
+        html_content += "<tr><td colspan='4'>No results found</td></tr>"
+    else:
+        for result in results:
+            ip = result["ip"]
+            title = result["title"]
+            ports = ", ".join(map(str, result["ports"])) if result["ports"] else "None"
+            icon_path = result["icon"]
             icon_html = f'<img src="{icon_path}" alt="Icon">' if icon_path else "No Icon"
-        else:
-            ip, title, ports, icon_html = "", "", "", ""
-
-        html_content += f"""
-            <tr>
-                <td>{ip}</td>
-                <td>{title}</td>
-                <td>{ports}</td>
-                <td>{icon_html}</td>
-            </tr>
-        """
+            
+            html_content += f"""
+                <tr>
+                    <td>{ip}</td>
+                    <td>{title}</td>
+                    <td>{ports}</td>
+                    <td>{icon_html}</td>
+                </tr>
+            """
 
     html_content += """
         </table>

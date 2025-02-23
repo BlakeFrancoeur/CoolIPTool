@@ -1,11 +1,8 @@
 # CoolIPTool
 aka CIPT
-<iframe src="https://www.logggos.club/logos/red-hat.svg"/>
 
-<table>
-    <tr>
-        <span style="color: green"> Some green text </span>
-      <iframe src="https://www.logggos.club/logos/red-hat.svg"/>
-        <p style="color:rgb(255,0,0);">Red paragraph text</p>
-    </tr>
-</table>
+# Manuals
+
+> Codespade Maual [Codespace Manual](https://pages.github.com/).
+
+![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://myoctocat.com/assets/images/base-octocat.svg)

@@ -65,7 +65,7 @@ def find_matching_icon(title):
     title_cleaned = title.lower().replace("communications", "").strip()
     title_words = title_cleaned.split()
 
-    # Exact match
+    # Check for an exact match
     for filename in os.listdir(ICON_FOLDER):
         if filename.lower() == f"{title_cleaned}.png":
             return os.path.join(ICON_FOLDER, filename)
@@ -79,6 +79,7 @@ def find_matching_icon(title):
     return None
 
 def generate_html_report(results):
+    """Generates an HTML report and overwrites old data properly."""
     html_content = """
     <!DOCTYPE html>
     <html lang="en">
@@ -126,11 +127,12 @@ def generate_html_report(results):
     </html>
     """
 
-    with open(HTML_FILE, "w") as file:
+    with open(HTML_FILE, "w") as file:  # Always overwrite with new results
         file.write(html_content)
 
-    print(f"HTML report generated: {HTML_FILE}")
+    print(f"Updated HTML report: {HTML_FILE}")
 
+# Main script execution
 input_ips = input("Enter IPs (can contain junk data): ").split(',')
 ips = extract_ips(input_ips)
 

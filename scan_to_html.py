@@ -106,6 +106,7 @@ def generate_html_report(results):
             </tr>
     """
 
+    # Iterate through the results and add each IP data in a table row
     for ip, data in results.items():
         title = data["title"]
         ports = ", ".join(map(str, data["ports"])) if data["ports"] else "None"

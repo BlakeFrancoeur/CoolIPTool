@@ -90,13 +90,7 @@ def generate_html_report(results):
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Port Scan Results</title>
-        <style>
-            body { font-family: Arial, sans-serif; }
-            table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-            th, td { border: 1px solid black; padding: 8px; text-align: left; }
-            th { background-color: #f2f2f2; }
-            img { max-width: 50px; max-height: 50px; }
-        </style>
+        <link rel="stylesheet" href="style.css">  <!-- Link to external CSS -->
     </head>
     <body>
         <h2>Port Scan Results</h2>

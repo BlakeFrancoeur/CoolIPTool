@@ -31,7 +31,6 @@ td {
 }
 
 img {
-    max-width: 30px;  /* Adjust the size of the image */
-    max-height: 30px; /* Adjust the size of the image */
-    border-radius: 50%; /* This rounds the corners of the image */
+    max-width: 70px;  /* Adjust the size of the image */
+    max-height: 70px; /* Adjust the size of the image */
 }

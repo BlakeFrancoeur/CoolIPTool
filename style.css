@@ -1,0 +1,85 @@
+/* General body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Heading styles */
+h1 {
+    text-align: center;
+    font-size: 2em;
+    color: #007BFF;
+    margin-top: 20px;
+}
+
+/* Table styling */
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden; /* To ensure the rounded corners are visible */
+}
+
+/* Header row */
+th {
+    background-color: #007BFF;
+    color: white;
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 2px solid #ddd;
+}
+
+/* Table rows */
+td {
+    background-color: #ffffff;
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Hover effect for rows */
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Rounded corners for the table */
+table, th, td {
+    border-radius: 10px;
+}
+
+/* Styling for the 'No matching icon found' message */
+.no-icon {
+    text-align: center;
+    color: #FF6347; /* Tomato red */
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+/* Button styles */
+button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Centering the table */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+}

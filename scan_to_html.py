@@ -7,6 +7,11 @@ from bs4 import BeautifulSoup
 ICON_FOLDER = "icons"  # Folder where the .png files are stored
 HTML_FILE = "scan_results.html"  # Output HTML file
 
+# Check and delete old scan_results.html before proceeding
+if os.path.exists(HTML_FILE):
+    os.remove(HTML_FILE)
+    print(f"Deleted old {HTML_FILE}, starting fresh...")
+
 def extract_ips(ip_list):
     ip_pattern = r'\b(?:\d{1,3}\.){3}\d{1,3}\b'
     return re.findall(ip_pattern, ",".join(ip_list))

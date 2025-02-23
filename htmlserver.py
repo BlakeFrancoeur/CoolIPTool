@@ -9,18 +9,10 @@ def host_html():
     PORT = 8000
     Handler = http.server.SimpleHTTPRequestHandler
 
-    # Check if the HTML file exists and move it to the 'html' folder
+    # Check if the HTML file exists
     if os.path.exists("scan_results.html"):
-        # Create 'html' folder if it doesn't exist
-        if not os.path.exists("html"):
-            os.mkdir("html")
-
-        # Move the HTML file to the 'html' folder
-        shutil.move("scan_results.html", os.path.join("html", "scan_results.html"))
-        print("Moved scan_results.html to the 'html' folder.")
-
         # Start the server to serve the file
-        print(f"Hosting scan_results.html at http://localhost:8000/html/scan_results.html")
+        print(f"Hosting scan_results.html at http://localhost:8000/scan_results.html")
         with socketserver.TCPServer(("", PORT), Handler) as httpd:
             print(f"Serving at port {PORT}")
             time.sleep(1)  # Allow time for the server to initialize
@@ -29,13 +21,12 @@ def host_html():
         print("OH NO ME BOYO! THERE'S NO HTML FILE! GO MAKE ME ONE, WILL YA BOYO?")
 
 def delete_html():
-    # Check if the file exists and delete it from the 'html' folder
-    html_path = os.path.join("html", "scan_results.html")
-    if os.path.exists(html_path):
-        os.remove(html_path)
+    # Check if the file exists and delete it
+    if os.path.exists("scan_results.html"):
+        os.remove("scan_results.html")
         print("scan_results.html has been deleted.")
     else:
-        print("scan_results.html not found in the 'html' folder, nothing to delete.")
+        print("scan_results.html not found, nothing to delete.")
 
 def main():
     # Ask user if they want to host the HTML file
@@ -53,7 +44,15 @@ def main():
             print("The HTML file was not deleted.")
 
     else:
-        print("Exiting program.")
+        # If not hosting, move the file to the 'html' folder
+        if os.path.exists("scan_results.html"):
+            if not os.path.exists("html"):
+                os.mkdir("html")
+            
+            shutil.move("scan_results.html", os.path.join("html", "scan_results.html"))
+            print("Moved scan_results.html to the 'html' folder.")
+        else:
+            print("OH NO ME BOYO! THERE'S NO HTML FILE! GO MAKE ME ONE, WILL YA BOYO?")
 
 if __name__ == "__main__":
     main()

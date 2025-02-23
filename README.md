@@ -7,16 +7,5 @@ Python! Firsts asks you for ips!
 you can enter any ip with relay anything on it like
 http://166.156.132.170/#view and it will remove any junk or unneeded things and it asks
 Want it to search ports if yes it will ask for ports time out time and tells you if the ips have the ports or not! no justs tells ya ips
-The html version is sotra the same but cooler 😎 your goona see how it works
+The html version is sotra the same but cooler 😎 your gonna find out your self how it works
 
-
-
-
-
-
-# Manuals
-
-> Codespade Maual [Codespace Manual](https://pages.github.com/).
-> Something Maual [something Manual](https://pages.github.com/).
-> Something Maual [something Manual](https://pages.github.com/).
-> Something Maual [something Manual](https://pages.github.com/).

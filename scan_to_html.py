@@ -80,7 +80,7 @@ def find_matching_icon(title):
             return os.path.join(ICON_FOLDER, possible_filename)
 
     return None
-
+print("TO SEE THE HTML PLEASE HOST THE FILE USING THE htmlserver.py OR MAULAY OPEN THANKS")
 def generate_html_report(results):
     """Generates an HTML report with only the valid results."""
     html_content = """
